@@ -1,0 +1,11 @@
+# ML framework — choose one
+torch
+torchvision
+
+# TensorFlow alternative:
+# tensorflow
+
+numpy
+pandas
+scikit-learn
+pytest
