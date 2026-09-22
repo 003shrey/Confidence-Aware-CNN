@@ -1,17 +1,26 @@
 # Decisions Log
 
-## Day 0: What the problem is - 
-**Problem:** The goal is to determine whether  a program can accurately tell
-the difference between "I know this answer" and "I don't have enough
-information to answer." Most software either always answers or never
-checks I want to see if it can check correctly.
+## Day 1:-
+**Decision:**  
+I will use handwritten digits and clearly non-digit inputs as the
+first test case for this problem.
 
+**Why:** 
+I'm looking for a straight forward scenario, in which the program clearly distinguishes between "what it is meant to recognize" and "what it is not".
+Instead of attempting to handle every kind of input, this keeps theis small enough to test correctly.
 
-**Scope:**
-- In: a program that reads handwritten digits, and a way to test
-  whether it correctly says "not sure" when shown something that
-  isn't a digit at all.
-- Out: Handling every type of input. It only needs to handle two
-  clearly different kinds of input, on purpose, to keep the test clean.
+**What I am purposefully not trying to solve:**  
+I am not trying to make the program recognize every kind of unknown
+input. For now, the test will stay limited to these two clearly
+different cases.
 
-**Starting guess:** I don't think making the program less confident will be enough to spot something it has never seen before. I think I may need a separate check for that. Untested as of today.
+**Starting guess:**  
+I do not think making the program less confident will be enough to spot
+something it has never seen before. I may need a separate check for
+that.
+
+**Status:**  
+
+Untested as of day 1.
+
+---
