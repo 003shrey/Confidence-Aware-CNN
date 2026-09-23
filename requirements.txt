@@ -1,10 +1,5 @@
-# ML framework — choose one
-torch
-torchvision
-
-# TensorFlow alternative:
-# tensorflow
-
+tensorflow
+keras
 numpy
 pandas
 scikit-learn
