@@ -1,29 +1,35 @@
 # Confidence-Aware CNN
 
-A CNN trained on MNIST, used to investigate whether model confidence
-can support safe abstention when encountering out-of-distribution
-inputs such as CIFAR-10.
+ A small program that reads handwritten digits and guesses which number it is, but if it is shown something that is not a digit at all, it should say "I do not know" instead of making something up.
 
-## Status
+ **Why-:** I chose this because real software frequently needs to know when it can trust its response and when it should confess it doesn't have enough information, and I want to know what it takes to develop and test that behaviour 
 
-In progress — Day 1: repository setup and baseline model.
+## Current Status
 
-## Core Question
+In progress — Day 2: Baseline model setup is complete.
 
-Is confidence calibration (temperature scaling) sufficient for safe
-abstention under distribution shift, or does it mainly improve
-confidence reliability on in-distribution data?
+## Documentation
 
-## Experimental Setup
+- [Requirements](REQUIREMENTS.md) — problem, scope, and goals
+- [Decisions](DECISIONS.md) — important choices and why they were made
+- [Notebooks](notebooks/) — model exploration and experiments
 
-The model will be evaluated under four conditions:
+## Current Flow
 
-- Raw confidence on MNIST
-- Calibrated confidence on MNIST
-- Raw confidence on CIFAR-10
-- Calibrated confidence on CIFAR-10
+```text
+Input Image
+     ↓
+Preprocessing
+     ↓
+CNN
+     ↓
+Prediction + Confidence
+
+```
 
 ## Setup
 
 ```bash
 pip install -r requirements.txt
+
+
