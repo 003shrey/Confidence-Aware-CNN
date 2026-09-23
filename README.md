@@ -10,7 +10,7 @@ In progress — Day 2: Baseline model setup is complete.
 
 ## Documentation
 
-- [Requirements](REQUIREMENTS.md) — problem, scope, and goals
+- [Requirements](REQUIREMENT.md) — problem, scope, and goals
 - [Decisions](DECISIONS.md) — important choices and why they were made
 - [Notebooks](notebooks/) — model exploration and experiments
 
