@@ -1,20 +1,25 @@
 # Decisions Log
 
 ## Day 1:- Basic Repo set and Dataset selection
-**Decision:**  
-I will use handwritten digits and clearly non-digit inputs as the
+
+**Decision:** 
+
+I will use handwritten digits[MNSIT Dataset] and clearly non-digit inputs[CIFAR-10] as the
 first test case for this problem.
 
 **Why:** 
+
 I'm looking for a straight forward scenario, in which the program clearly distinguishes between "what it is meant to recognize" and "what it is not".
 Instead of attempting to handle every kind of input, this keeps theis small enough to test correctly.
 
-**What I am purposefully not trying to solve:**  
+**What I am purposefully not trying to solve:** 
+
 I am not trying to make the program recognize every kind of unknown
 input. For now, the test will stay limited to these two clearly
 different cases.
 
 **Starting guess:**  
+
 I do not think making the program less confident will be enough to spot
 something it has never seen before. I may need a separate check for
 that.
@@ -72,3 +77,35 @@ the initial exploration and why the evaluation setup was changed.
 **Status:**
 
 Initial exploration complete. Clean baseline complete.
+
+---
+
+## Day 3 -  Checking Model Confidence
+
+**What I did:**
+
+Added a calibration (adjusting how confident the model sounds) step to check whether the model's confidence could be made more reliable, then compared it before and after on familiar digits and on unfamiliar images.
+
+**What I found:**
+
+- Calibration didn't change predictions. On digits, it didn't clearly improve ECE (a score for how trustworthy the confidence is), slightly worse in this run and also confidence itself dropped a little.
+
+- Confidence was already much lower on unfamiliar inputs than on familiar ones, and calibration lowered it further.
+
+**What this made me realise:**
+
+Changing confidence does not automatically make it more reliable.
+However, the difference between familiar and unfamiliar inputs made
+confidence worth testing as a possible signal for when the model should
+**"answer"** or **"abstain"**.
+
+**Decision**
+
+Move forward with a confidence-threshold experiment to test whether
+confidence can support an "I don't know" decision.
+
+**Status**
+
+Checking completed
+
+---
