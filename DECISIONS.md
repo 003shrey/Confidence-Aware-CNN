@@ -34,8 +34,8 @@ Untested as of day 1.
 **What I did:**
 
 Started with a simple CNN for handwritten-digit recognition. Rather
-than treat final accuracy alone as enough evidence, I compared it
-against a Perceptron and a simple ANN, and looked at individual
+than treat "final accuracy" alone as enough evidence, I compared it
+against a Perceptron and a simple ANN(Artificial Nueral Network), and looked at individual
 predictions where they disagreed.
 
 **What I found:**
@@ -49,7 +49,7 @@ the ANN and CNN both gets it right.
 
 **What I learned from this:**
 
-A single accuracy number doesn't show how models actually differ.
+A **single accuracy number**, doesn't show how models actually differ.
 Models can have different overall performance and still make different
 mistakes on individual examples.
 
@@ -63,9 +63,12 @@ Reran the CNN, but this time split off a chunk of the training data to check pro
 
 **New Baseline:**
 
-Validation accuracy: 98.95%
-Test accuracy: 98.93%
+Validation accuracy: 98.95%  
+Test accuracy: 98.93%        
 
+- Validation accuracy measures how well it performs on completely new, unseen data.
+- Accuracy measures how well a model performs on the data it has already seen.
+  
 The model performed roughly as well on data it never saw as it did on data it verified itself against along the road, and the fact that these two figures are nearly identical is a positive early indicator.This gives a cleaner starting point for the next step.
 
 **Final Decision:**
@@ -85,6 +88,8 @@ Initial exploration complete. Clean baseline complete.
 **What I did:**
 
 Added a calibration (adjusting how confident the model sounds) step to check whether the model's confidence could be made more reliable, then compared it before and after on familiar digits and on unfamiliar images.
+
+- Calibration can be understand as "If a model says there is an 80% chance of rain, it should actually rain 80 out of 100 times you hear that prediction."
 
 **What I found:**
 
@@ -109,3 +114,5 @@ confidence can support an "I don't know" decision.
 Checking completed
 
 ---
+
+## Day 4:- 
