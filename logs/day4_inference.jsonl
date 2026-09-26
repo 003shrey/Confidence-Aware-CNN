@@ -1,0 +1,3 @@
+{"confidence": 0.999973, "dataset": "MNIST", "prediction": 7, "request_id": "day4-mnist-0", "threshold": 0.95, "verdict": "answer"}
+{"confidence": 0.31633, "dataset": "CIFAR-10", "prediction": null, "request_id": "day4-cifar-low-0", "threshold": 0.95, "verdict": "I don't know"}
+{"confidence": 0.996032, "dataset": "CIFAR-10", "prediction": 2, "request_id": "day4-cifar-high-111", "threshold": 0.95, "verdict": "answer"}
