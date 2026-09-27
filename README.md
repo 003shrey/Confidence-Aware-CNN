@@ -30,6 +30,18 @@ Answer / I don't know
 
 ```
 
+## Project Structure
+
+```text
+Confidence-Aware-CNN/
+├── notebooks/       # experiment work and results
+├── logs/            # inference records and readable preview
+├── README.md        # project overview
+├── REQUIREMENT.md   # problem, scope, and goals
+├── DECISIONS.md     # decisions and reasoning
+└── requirements.txt # project dependencies
+
+```
 ## Setup
 
 ```bash
