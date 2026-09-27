@@ -1,6 +1,6 @@
 # Decisions Log
 
-## Day 1:- Basic Repo setup and Dataset selection
+## Day 1 - Basic Repo setup and Dataset selection
 
 **Decision on Dataset selection:-** 
 
@@ -9,24 +9,20 @@ first test case for this problem.
 
 **Why:-** 
 
-I'm looking for a straight forward scenario, in which the program clearly distinguishes between "what it is meant to recognize" and "what it is not".
+I'm looking for a straight forward scenario, in which the program clearly distinguishes between *"what it is meant to recognize"* and *"what it is not"*.
 Instead of attempting to handle every kind of input, this keeps theis small enough to test correctly.
 
 **What I am purposefully not trying to solve:-** 
 
-I am not trying to make the program recognize every kind of unknown
-input. For now, the test will stay limited to these two clearly
-different cases.
+I am not trying to make the program recognize every kind of unknown input. For now, the test will stay limited to these two clearly different cases.
 
 **Starting guess:-**  
 
-I do not think making the program less confident will be enough to spot
-something it has never seen before. I may need a separate check for
-that.
+I do not think making the program less confident will be enough to spot something it has never seen before. I may need a separate check for that.
 
 **Alternative dataset considered:-**
 
-I considered picking two similar looking dataset like, *digits vs letters* instead of *digits vs. clearly non-digit inputs*. I chose not to do this since it is easier to determine whether the system is working as intended when there is a clear distinction between what is "known" and what is "unknown".
+I considered picking two similar-looking dataset, like *digits vs letters* instead of *digits vs. clearly non-digit inputs*. I chose not to do this since it is easier to determine whether the system is working as intended when there is a clear distinction between what is "known" and what is "unknown".
 
 **Status:-**  
 
@@ -34,22 +30,21 @@ Untested as of day 1.
 
 ---
 
-## Day 2 — First Baseline and Evaluation Check
+## Day 2 - First Baseline and Evaluation Check
+
 **What I did:-**
 
-Started with a simple CNN for handwritten-digit recognition. Rather
-than treat "final accuracy" alone as enough evidence, I compared it
-against a Perceptron and a simple ANN(Artificial Nueral Network), and looked at individual
-predictions where they disagreed.
+Started with a simple model(CNN) for handwritten-digit recognition. Rather than treat *"final accuracy"* alone as enough evidence, I compared it against a Perceptron and a simple ANN (Artificial Nueral Network), and looked at individual predictions where they disagreed.
+   > CNN(Convolution Neural Network) is a type of artificial intelligence designed to "see" and recognize patterns in images
 
+   
 **What I found:-**
 
 - Perceptron: 91.67%
 - ANN: 97.35%
 - CNN: 99.14%
 
-In one example, the Perceptron predicted "7" for an actual "1", while
-the ANN and CNN both gets it right.
+In one example, the Perceptron predicted "7" for an actual "1", while the ANN and CNN both gets it right.
 
 **What I learned from this:-**
 
@@ -68,22 +63,20 @@ Reran the CNN, but this time split off a chunk of the training data to check pro
 Validation accuracy: 98.95%  
 Test accuracy: 98.93%        
 
-- Validation accuracy measures how well it performs on completely new, unseen data.
-- Accuracy measures how well a model performs on the data it has already seen.
+  > Validation accuracy measures performance on the held-out data used during model development.
+
+  > Test accuracy measures performance on the separate test set kept untouched until final evaluation.
   
-The model performed roughly as well on data it never saw as it did on data it verified itself against along the road, and the fact that these two figures are nearly identical is a positive early indicator.This gives a cleaner starting point for the next step.
+The model performed almost equally well on the validation and test data, which gave me enough confidence to use this as the baseline for the next step.
 
 **Why I stopped here:-**
 
-At this point, the objective was to establish a clean, reliable baseline upon which the remainder of the experiment could be built, not to achieve the highest level of accuracy.
-It was sufficient to proceed once validation and test accuracy were almost similar and within the typical range for this type of model. Spending more time tuning the model further would have
-used up time without changing the actual question being tested.
+The result wasn't what told me to stop, - it was the goal. I wasn't trying to get *the highest possible accuracy* at this stage, just a clean baseline to build the rest of the experiment on. Once I had that, continuie to model tuning(improving accuracy and validation accuracy) further would have used time without changing the actual question being tested.
 
 **Final Decision:-**
 
-Using this second run as the project baseline going forward.
-The first notebook stays in the project history because it records
-the initial exploration and why the evaluation setup was changed.
+- Using this second run as the project baseline going forward.
+- The first notebook stays in the project history because it records the initial exploration and why the evaluation setup was changed.
 
 **Status:-**
 
@@ -91,11 +84,11 @@ Initial exploration complete. Clean baseline complete.
 
 ---
 
-## Day 3 -  Checking Model Confidence (Temperature Scaling)
+## Day 3 - Checking Model Confidence (Temperature Scaling)
 
 **Why temperature scaling:-**
 
-A few different methods exist for this kind of adjustment. I picked temperature scaling because it's the simplest, it doesn't require retraining the model, just tuning one number afterward. Given theproject is meant to stay small, this was the natural first method to try, before considering anything more involved.
+Other ways to do this exist. Some need the whole model retrained, which would have meant redoing earlier work. I picked temperature scaling because it only needed tuning one number afterward, no retraining, which fit a project that is meant to stay small.
 
 **What I did:-**
 
@@ -116,20 +109,19 @@ Changing confidence does not automatically make it more reliable. However, the d
 
 **Decision:-**
 
-Move forward with a confidence-threshold experiment to test whether
-confidence can support an "I don't know" decision.
+Move forward with a confidence-threshold experiment. A threshold is the confidence cutoff used to decide whether the model should answer or say "I don't know".
 
 **What I chose not to test:-**
 
-I didn't try other calibration methods beyond temperature scaling, and I didn't yet test harder, more similar-looking unfamiliar inputs. I only have the easy CIFAR-10 case ( low-resolution color images of non-digits). Both are reasonable next steps, but answering the core question didn't require them yet.
+I didn't try other calibration methods beyond temperature scaling, and I didn't yet test harder, more similar-looking unfamiliar inputs. I only have the easy CIFAR-10 case: low-resolution images that are clearly different from handwritten digits. Both are reasonable next steps, but answering the core question didn't require them yet.
 
-**Status**
+**Status:-**
 
 Checking completed
 
 ---
 
-## Day 4:- Looking at the Failures & Logging
+## Day 4 - Looking at the Failures & Logging
 
 **What I did:-**
 
@@ -149,19 +141,21 @@ The logging works as designed: it correctly recorded a familiar digit being answ
 
 **How I knew it worked, and what would have told me it hadn't:-**
 
-I checked every logged record against a simple rule: 
-- if confidence was at or above the cutoff, the verdict should say "answer". 
--  if below the cutoff, it should say "I don't know," with no prediction recorded.
+   I checked every logged record against a simple rule: 
+  - if confidence was at or above the cutoff, the verdict should say "answer". 
+  -  if below the cutoff, it should say "I don't know," with no prediction recorded.
   
   All records matched. It would have failed if any record showed a mismatch, like an *"I don't know" case* with a real prediction attached, or an *"answer" case* below the cutoff, either of those would have meant the logging logic was wrong, not just the model.
 
 **What changed after I started building:-**
 
-While building this, I noticed the log file would normally be hidden by settings meant to keep temporary files out of the repo. Since this log is the actual proof that logging works, I made sure it stays visible instead.
+  While building this, I noticed the log file would normally be hidden by settings meant to keep temporary files out of the repo. Since this log is the actual proof that logging works, I made sure it stays visible instead.
 
 **What I chose not to do futher:-**
 
-I only logged three example decisions, not the full dataset. The goal here was to prove the logging mechanism works correctly, not to log every single case logging at full scale.
+I only logged three example decisions, not the full dataset. The goal here was to prove the logging mechanism worked correctly, not to log every single case logging at full scale.
+
+  > **Revisited on day 5-** I later thought three cases weren't enough to prove the model was abstaining properly across the board, which is why I ran the full evaluation on Day 5.
 
 I also did not add another detection method beyond confidence. This experiment already shows the limitation of relying on confidence
 alone, fixing that limitation would be a different,  a larger project perhaps.
@@ -172,9 +166,43 @@ Confidence is useful, but not enough on its own to safely decide whether an unfa
 
 **Status:-**
 
-Day 4 complete - failure analysis and inference logging both done and
-verified.
+Day 4 complete - failure analysis and inference logging both done and verified.
 
 ---
 
-## Day 5:-
+## Day 5 - Checking the Logging at Full Scale
+
+**What I did:-**
+
+Ran the same logging step from Day 4 across all the digit images and all the unfamiliar images, instead of just the 3 examples. Checked that everyone of the 11,003 records was recorded correctly.
+
+**What I found:-**
+
+*9,516 were answered* and *1,487 said "I don't know*." All records passed the field and verdict checks. These numbers match what the earlier threshold test already predicted, so the logging works the same way at full scale as it did on the 3 examples.
+
+**What this told me:-**
+
+The earlier 3 examples weren't coincidence, the same behaviour holds across everything, not just a few chosen cases.
+
+**Decision:-**
+
+Not adding automated tests. Everything lives in notebooks, not separate reusable code, so there's nothing to test without creating extra structure the project doesn't actually need.
+
+**Status:-**
+
+Day 5 completed.
+
+---
+
+
+## Least Certain About
+
+- The part, I'm least sure about is the *choice to test against unfamiliar images* (CIFAR-10), they're so different from handwritten digits(MNIST) that it's no surprise the model struggled with them. 
+
+- I don't know if this same result would hold up against something closer to what it's meant to recognize, like messy or unusual handwriting. Testing something      closer to the real thing would tell me whether this finding actually means something, or was just an easy case to spot.
+
+### What would change my mind
+
+- If harder, more **similar unfamiliar cases** showed the same pattern and the model is still clearly less sure about them, that would tell me the finding is real, not just easy to spot. 
+
+- But if the model remained highly confident on those harder unfamiliar cases, I would treat the **current result** as too limited to rely on by itself.
