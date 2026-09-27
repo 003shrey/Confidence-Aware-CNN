@@ -1,6 +1,6 @@
 # Inference Log Preview
 
-This table shows the first 100 records from `day4_inference.jsonl`. The JSONL file remains the complete machine-readable log.
+This table shows the first 100 records from `day5_evaluation.jsonl`. The JSONL file remains the complete machine-readable log.
 
 | # | Request ID | Dataset | Prediction | Confidence | Threshold | Verdict |
 |---:|---|---|---:|---:|---:|---|
