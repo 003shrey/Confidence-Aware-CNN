@@ -6,13 +6,14 @@
 
 ## Current Status
 
-In progress — Day 2: Baseline model setup is complete.
+Experiment complete — documentation and handoff are being finalized.
 
-## Documentation
+## Documentation and Code
 
 - [Requirements](REQUIREMENT.md) — problem, scope, and goals
 - [Decisions](DECISIONS.md) — important choices and why they were made
-- [Notebooks](notebooks/) — model exploration and experiments
+- [Notebooks](notebooks/) — experiment and model implementation
+- [Evaluation Log](logs/day5_inference.jsonl) — recorded Evaluation
 
 ## Current Flow
 
@@ -23,7 +24,9 @@ Preprocessing
      ↓
 CNN
      ↓
-Prediction + Confidence
+Confidence
+     ↓
+Answer / I don't know
 
 ```
 
