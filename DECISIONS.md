@@ -191,6 +191,7 @@ Not adding automated tests. Everything lives in notebooks, not separate reusable
 **Status:-**
 
 Day 5 completed.
+>  Follow up:- Saved the trained model and required settings so the system can be reused without starting from scratch.
 
 ---
 
