@@ -6,7 +6,11 @@
 
 ## Current Status
 
-Experiment complete — documentation and handoff are finalized.
+Experiment complete - documentation and handoff are finalized.
+
+## Result
+
+The experiment showed that confidence can provide useful information about how reliable a prediction may be, but **confidence alone is not enough to safely decide when the system should answer**.
 
 ## Documentation and Code
 
@@ -16,6 +20,7 @@ Experiment complete — documentation and handoff are finalized.
 - [Notebooks](notebooks/) — experiment and model implementation
 - [Artifacts](artifacts/) — saved model and calibration parameters
 - [Evaluation Log](logs/day5_evaluation.jsonl) — full evaluation records
+
 
 ## Current Flow
 
