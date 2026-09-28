@@ -6,14 +6,16 @@
 
 ## Current Status
 
-Experiment complete — documentation and handoff are being finalized.
+Experiment complete — documentation and handoff are finalized.
 
 ## Documentation and Code
 
 - [Requirements](REQUIREMENT.md) — problem, scope, and goals
 - [Decisions](DECISIONS.md) — important choices and why they were made
+- [SDD](SDD.pdf) — model's system design and handover guide
 - [Notebooks](notebooks/) — experiment and model implementation
-- [Evaluation Log](logs/day5_inference.jsonl) — recorded Evaluation
+- [Artifacts](artifacts/) — saved model and calibration parameters
+- [Evaluation Log](logs/day5_evaluation.jsonl) — full evaluation records
 
 ## Current Flow
 
@@ -34,12 +36,14 @@ Answer / I don't know
 
 ```text
 Confidence-Aware-CNN/
-├── notebooks/       # experiment work and results
-├── logs/            # inference records and readable preview
-├── README.md        # project overview
-├── REQUIREMENT.md   # problem, scope, and goals
-├── DECISIONS.md     # decisions and reasoning
-└── requirements.txt # project dependencies
+├── artifacts/        # saved model and calibration parameters
+├── notebooks/        # experiment work and results
+├── logs/              # inference records and evaluation evidence
+├── README.md          # project overview
+├── REQUIREMENT.md     # problem, scope, and goals
+├── DECISIONS.md       # decisions and reasoning
+├── SDD.pdf            #  model's system design and handover guide
+└── requirements.txt   # project dependencies
 
 ```
 ## Setup
