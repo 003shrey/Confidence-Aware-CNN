@@ -35,7 +35,10 @@ Untested as of day 1.
 **What I did:-**
 
 Started with a simple model(CNN) for handwritten-digit recognition. Rather than treat *"final accuracy"* alone as enough evidence, I compared it against a Perceptron and a simple ANN (Artificial Nueral Network), and looked at individual predictions where they disagreed.
-   > CNN(Convolution Neural Network) is a type of artificial intelligence designed to "see" and recognize patterns in images
+
+   > CNN(Convolution Neural Network) is a type of artificial intelligence designed to "see" and recognize patterns in images.
+
+   > An Artificial Neural Network (ANN) is like a digital brain made of many interconnected smart cells, while a Perceptron is just a single one of those cells         working on its own 
 
    
 **What I found:-**
@@ -94,8 +97,9 @@ Other ways to do this exist. Some need the whole model retrained, which would ha
 
 Added a calibration (adjusting how confident the model sounds) step to check whether the model's confidence could be made more reliable, then compared it before and after on familiar digits and on unfamiliar images.
 
-- Calibration can be understand as "If a model says there is an 80% chance of rain, it should actually rain 80 out of 100 times you hear that prediction."
-- Confidence  is a number showing how sure a model is about a single prediction it just made.
+> Calibration can be understand as "If a model says there is an 80% chance of rain, it should actually rain 80 out of 100 times you hear that prediction."
+
+>Confidence  is a number showing how sure a model is about a single prediction it just made.
   
 **What I found:-**
 
@@ -113,7 +117,7 @@ Move forward with a confidence-threshold experiment. A threshold is the confiden
 
 **What I chose not to test:-**
 
-I didn't try other calibration methods beyond temperature scaling, and I didn't yet test harder, more similar-looking unfamiliar inputs. I only have the easy CIFAR-10 case: low-resolution images that are clearly different from handwritten digits. Both are reasonable next steps, but answering the core question didn't require them yet.
+I didn't try other calibration methods beyond temperature scaling, and I didn't yet test harder, more similar-looking unfamiliar inputs. I only have the easy CIFAR-10 case: unfamiliar clearly non digits that are clearly different from handwritten digits. Both are reasonable next steps, but answering the core question didn't require them yet.
 
 **Status:-**
 
